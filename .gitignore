@@ -1,0 +1,24 @@
+# Virtual environments
+.venv/
+venv/
+env/
+.env
+
+# Jupyter Notebooks and Checkpoints
+.ipynb_checkpoints/
+plant-leaf-diseases-classification-using-cnn.ipynb
+
+# Models and Model Directories
+/saved_models/
+
+# Dataset and Media
+dataset/
+
+# Python caching
+__pycache__/
+*.py[cod]
+*$py.class
+
+# IDE and OS files
+.vscode/
+.DS_Store

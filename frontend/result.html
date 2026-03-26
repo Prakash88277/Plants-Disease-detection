@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detailed Result - PlantCare AI</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .detailed-result {
+            max-width: 800px;
+            margin: 100px auto 50px;
+            padding: 2rem;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow-md);
+        }
+        .report-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+        }
+        .report-content {
+            line-height: 1.8;
+            color: var(--text-main);
+        }
+        .report-content h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-green);
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--leaf-green);
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+        .back-link:hover {
+            color: var(--dark-green);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar scrolled">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-leaf"></i> PlantCare AI
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="detailed-result">
+            <a href="index.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Scanner</a>
+            
+            <div class="report-header">
+                <h2>Disease Analysis Report</h2>
+                <p>AI Generated on <span id="current-date"></span></p>
+            </div>
+            
+            <div class="report-content">
+                <h3>Identified Plant: Tomato</h3>
+                <p>The tomato is the edible berry of the plant Solanum lycopersicum, commonly known as a tomato plant. The species originated in western South America and Central America.</p>
+                
+                <h3>Detected Issue: Early Blight (Confidence: 96.7%)</h3>
+                <p>Early blight is a disease of tomato caused by the fungus <strong>Alternaria tomato</strong>. It occurs everywhere tomatoes are grown. It can cause damping-off, collar rot, stem cankers, leaf blight, and fruit rot.</p>
+                
+                <h3>Recommended Action</h3>
+                <ul>
+                    <li><i class="fa-solid fa-check" style="color:var(--success)"></i> Prune or remove infected leaves immediately.</li>
+                    <li><i class="fa-solid fa-check" style="color:var(--success)"></i> Improve air circulation around the plants.</li>
+                    <li><i class="fa-solid fa-check" style="color:var(--success)"></i> Avoid overhead watering; use drip irrigation.</li>
+                    <li><i class="fa-solid fa-check" style="color:var(--success)"></i> Apply appropriate copper-based fungicides if the condition worsens.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-bottom" style="margin-top: 0; padding-top: 1rem; border: none;">
+            <p>&copy; 2026 PlantCare AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('current-date').textContent = new Date().toLocaleDateString();
+    </script>
+</body>
+</html>

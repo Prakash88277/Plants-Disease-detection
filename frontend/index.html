@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlantCare AI - Plant Disease Detection</title>
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-leaf"></i> PlantCare AI
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li class="mobile-close"><i class="fa-solid fa-times" id="close-menu-btn"></i></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#how-it-works">How it Works</a></li>
+                <li><a href="#upload" class="nav-btn upload-btn">Upload Image</a></li>
+            </ul>
+            <div class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>AI Powered Plant Disease Detection</h1>
+                <p>Upload a leaf image and instantly detect plant diseases using advanced deep learning models. Protect your crops and ensure healthy growth.</p>
+                <div class="hero-buttons">
+                    <a href="#upload" class="btn cta-button">Detect Disease</a>
+                    <a href="#how-it-works" class="btn secondary-button">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="image-wrapper">
+                    <div class="hero-illustration">
+                        <i class="fa-solid fa-seedling icon-main"></i>
+                        <div class="floating-icon icon-1"><i class="fa-solid fa-bug"></i></div>
+                        <div class="floating-icon icon-2"><i class="fa-solid fa-droplet"></i></div>
+                        <div class="floating-icon icon-3"><i class="fa-solid fa-sun"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Three simple steps to identify plant diseases</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                    </div>
+                    <div class="step-badge">Step 1</div>
+                    <h3>Upload Leaf Image</h3>
+                    <p>Take a clear picture of the affected plant leaf and upload it to our secure platform.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <div class="step-badge">Step 2</div>
+                    <h3>AI Model Analyzes Image</h3>
+                    <p>Our advanced deep learning algorithms process the image to identify disease patterns.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fa-solid fa-file-medical"></i>
+                    </div>
+                    <div class="step-badge">Step 3</div>
+                    <h3>Get Prediction Result</h3>
+                    <p>Receive an instant, accurate diagnosis with the plant type and disease name.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Image Upload Section -->
+    <section id="upload" class="upload-section">
+        <div class="container">
+            <div class="upload-wrapper">
+                <div class="section-header">
+                    <h2>Disease Detection</h2>
+                    <p>Upload a clear image of the affected plant leaf for best results</p>
+                </div>
+                
+                <div class="upload-card" id="drop-area">
+                    <div class="upload-content" id="upload-content">
+                        <div class="upload-icon-wrapper">
+                            <i class="fa-regular fa-image upload-icon"></i>
+                        </div>
+                        <p class="upload-title">Drag and Drop image here</p>
+                        <span class="upload-divider">or</span>
+                        <button class="btn browse-btn" onclick="document.getElementById('file-input').click()">Browse Files</button>
+                        <input type="file" id="file-input" hidden accept=".jpg, .jpeg, .png">
+                        <p class="file-info">Supported formats: JPG, PNG (Max size: 5MB)</p>
+                    </div>
+                    
+                    <!-- Preview area (hidden initially) -->
+                    <div class="preview-container hidden" id="preview-container">
+                        <div class="image-preview-wrapper">
+                            <img id="image-preview" src="" alt="Image Preview">
+                            <button class="remove-btn" id="remove-btn" title="Remove image">
+                                <i class="fa-solid fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="file-details">
+                            <i class="fa-solid fa-file-image"></i>
+                            <span id="file-name-display">image.jpg</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <!-- If the user wants to browse again, they can click Upload Image -->
+                    <button id="upload-btn-trigger" class="btn secondary-button" onclick="document.getElementById('file-input').click()" style="display: none;">Upload New Image</button>
+                    <button id="detect-btn" class="btn detect-btn" disabled>
+                        <i class="fa-solid fa-magnifying-glass"></i> Detect Disease
+                    </button>
+                </div>
+
+                <!-- Loading State -->
+                <div id="loading" class="loading-state hidden">
+                    <div class="loader">
+                        <div class="circular-loader"></div>
+                    </div>
+                    <p>AI is analyzing the image...</p>
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                </div>
+
+                <!-- Result Section -->
+                <div id="result-section" class="result-section hidden">
+                    <h3><i class="fa-solid fa-clipboard-check"></i> Prediction Result</h3>
+                    <div class="result-card">
+                        <div class="result-grid">
+                            <div class="result-item">
+                                <div class="result-icon plant-icon"><i class="fa-solid fa-leaf"></i></div>
+                                <div class="result-details">
+                                    <span class="label">Plant Type</span>
+                                    <span class="value badge-plant" id="res-plant">-</span>
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-icon disease-icon"><i class="fa-solid fa-virus"></i></div>
+                                <div class="result-details">
+                                    <span class="label">Disease</span>
+                                    <span class="value badge-disease" id="res-disease">-</span>
+                                </div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-icon confidence-icon"><i class="fa-solid fa-chart-pie"></i></div>
+                                <div class="result-details">
+                                    <span class="label">Confidence Score</span>
+                                    <div class="confidence-wrapper">
+                                        <span class="value badge-confidence" id="res-confidence">-</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="result-actions">
+                            <a href="result.html" class="btn outline-btn">View Detailed Report</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model Info Section -->
+    <section id="about" class="model-info">
+        <div class="container">
+            <div class="info-content">
+                <div class="section-header">
+                    <h2>Powered by Advanced AI</h2>
+                    <p>Our system uses state-of-the-art Convolutional Neural Networks ensuring high accuracy and reliability.</p>
+                </div>
+                
+                <div class="models-grid">
+                    <div class="model-card">
+                        <div class="model-icon">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <h3>EfficientNetB0</h3>
+                        <p>A highly optimized architecture providing outstanding accuracy with computational efficiency, perfect for real-time inference.</p>
+                        <ul class="model-features">
+                            <li><i class="fa-solid fa-check"></i> Fast processing</li>
+                            <li><i class="fa-solid fa-check"></i> High precision</li>
+                        </ul>
+                    </div>
+                    <div class="model-card">
+                        <div class="model-icon">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h3>ResNet50</h3>
+                        <p>A deep residual learning framework that extracts complex features from plant leaves, enabling robust disease classification.</p>
+                        <ul class="model-features">
+                            <li><i class="fa-solid fa-check"></i> Deep architecture</li>
+                            <li><i class="fa-solid fa-check"></i> Robust feature extraction</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo footer-logo">
+                        <i class="fa-solid fa-leaf"></i> PlantCare AI
+                    </a>
+                    <p class="footer-desc">Empowering agriculture through artificial intelligence. Detect diseases early and save your crops.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-icon"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="link-group">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#how-it-works">How it Works</a></li>
+                            <li><a href="#upload">Detect Disease</a></li>
+                        </ul>
+                    </div>
+                    <div class="link-group">
+                        <h4>Legal</h4>
+                        <ul>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PlantCare AI. All rights reserved. | Developed by Senior Frontend Dev</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="js/script.js"></script>
+</body>
+</html>
