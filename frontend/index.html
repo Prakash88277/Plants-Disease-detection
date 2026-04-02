@@ -21,7 +21,7 @@
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
             <a href="index.html" class="logo">
-                <i class="fa-solid fa-leaf"></i> PlantCare AI
+                <i class="fa-solid fa-leaf"></i> PDDS
             </a>
             <div class="nav-right">
                 <ul class="nav-links" id="nav-links">
@@ -43,12 +43,12 @@
     <section id="home" class="hero">
         <div class="container hero-container">
             <div class="hero-content">
-                <h1>AI Powered Plant Disease Detection</h1>
-                <p>Upload a leaf image and instantly detect plant diseases using advanced deep learning models. Protect
-                    your crops and ensure healthy growth.</p>
+                <h1>Plant Disease Detection<br>Using CNN</h1>
+                <p>Leverage a sequential cascade of ResNet50 and EfficientNetB0 to accurately identify plant diseases
+                    from leaf images - ensuring precise detection and improved agricultural productivity.</p>
                 <div class="hero-buttons">
                     <a href="#upload" class="btn cta-button">Detect Disease</a>
-                    <a href="#how-it-works" class="btn secondary-button">Learn More</a>
+                    <button id="learn-more-btn" class="btn secondary-button">Learn More</button>
                 </div>
             </div>
             <div class="hero-image">
@@ -86,7 +86,7 @@
                     </div>
                     <div class="step-badge">Step 2</div>
                     <h3>AI Model Analyzes Image</h3>
-                    <p>Our advanced deep learning algorithms process the image to identify disease patterns.</p>
+                    <p>A sequential cascade of ResNet50 and EfficientNetB0 analyzes leaf images.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-icon">
@@ -144,10 +144,10 @@
                         Image</button>
                     <button id="detect-btn" class="btn detect-btn" disabled>
                         <i class="fa-solid fa-magnifying-glass"></i> Detect Disease
-                    </button>
+                        <!-- </button>
                     <button id="analysis-btn" class="btn outline-btn" style="display: flex; gap: 0.5rem;">
                         <i class="fa-solid fa-chart-line"></i> View Model Analysis
-                    </button>
+                    </button> -->
                 </div>
 
                 <!-- Loading State -->
@@ -191,7 +191,11 @@
                             </div>
                         </div>
                         <div class="result-actions">
-                            <a href="result.html" class="btn outline-btn">View Detailed Report</a>
+                            <!-- <a href="result.html" class="btn outline-btn">View Detailed Report</a> -->
+                            </button>
+                            <button id="analysis-btn" class="btn outline-btn" style="display: flex; gap: 0.5rem;">
+                                <i class="fa-solid fa-chart-line"></i> View Model Analysis
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -201,30 +205,16 @@
                     <div class="analysis-header">
                         <h3><i class="fa-solid fa-chart-line"></i> Model Insights & Analysis</h3>
                     </div>
-                    
+
                     <div class="analysis-grid">
                         <div class="analysis-item">
                             <h4 class="analysis-title">Confidence Comparison</h4>
                             <div class="analysis-img-wrapper">
-                                <img src="../Images/confidence_comparison.png" alt="Confidence Comparison" loading="lazy">
+                                <img src="../Images/confidence_comparison.png" alt="Confidence Comparison"
+                                    loading="lazy">
                             </div>
-                            <p class="analysis-desc">Comparison between Stage-1 (ResNet50) and Stage-2 (EfficientNetB0) confidence scores.</p>
-                        </div>
-                        
-                        <div class="analysis-item">
-                            <h4 class="analysis-title">ResNet50 Confusion Matrix</h4>
-                            <div class="analysis-img-wrapper">
-                                <img src="../Images/resnet_confusion_matrix.png" alt="ResNet50 Confusion Matrix" loading="lazy">
-                            </div>
-                            <p class="analysis-desc">Detailed performance matrix for our robust feature extraction model.</p>
-                        </div>
-
-                        <div class="analysis-item">
-                            <h4 class="analysis-title">EfficientNetB0 Confusion Matrix</h4>
-                            <div class="analysis-img-wrapper">
-                                <img src="../Images/efficientnet_confusion_matrix.png" alt="EfficientNetB0 Confusion Matrix" loading="lazy">
-                            </div>
-                            <p class="analysis-desc">Breakdown of classification accuracy for the high-precision stage 2 model.</p>
+                            <p class="analysis-desc">Comparison between Stage-1 (ResNet50) and Stage-2 (EfficientNetB0)
+                                confidence scores.</p>
                         </div>
 
                         <div class="analysis-item">
@@ -240,7 +230,8 @@
                             <div class="analysis-img-wrapper">
                                 <img src="../Images/sample_prediction.png" alt="Sample Prediction" loading="lazy">
                             </div>
-                            <p class="analysis-desc">Example of how our models predict and categorize a diseased leaf.</p>
+                            <p class="analysis-desc">Example of how our models predict and categorize a diseased leaf.
+                            </p>
                         </div>
 
                         <div class="analysis-item">
@@ -248,7 +239,27 @@
                             <div class="analysis-img-wrapper">
                                 <img src="../Images/batch_predictions.png" alt="Batch Predictions" loading="lazy">
                             </div>
-                            <p class="analysis-desc">Robust visualization of the model processing multiple images concurrently.</p>
+                            <p class="analysis-desc">Robust visualization of the model processing multiple images
+                                concurrently.</p>
+                        </div>
+                        <div class="analysis-item">
+                            <h4 class="analysis-title">ResNet50 Confusion Matrix</h4>
+                            <div class="analysis-img-wrapper">
+                                <img src="../Images/resnet_confusion_matrix.png" alt="ResNet50 Confusion Matrix"
+                                    loading="lazy">
+                            </div>
+                            <p class="analysis-desc">Detailed performance matrix for our robust feature extraction
+                                model.</p>
+                        </div>
+
+                        <div class="analysis-item">
+                            <h4 class="analysis-title">EfficientNetB0 Confusion Matrix</h4>
+                            <div class="analysis-img-wrapper">
+                                <img src="../Images/efficientnet_confusion_matrix.png"
+                                    alt="EfficientNetB0 Confusion Matrix" loading="lazy">
+                            </div>
+                            <p class="analysis-desc">Breakdown of classification accuracy for the high-precision stage 2
+                                model.</p>
                         </div>
                     </div>
                 </div>
@@ -261,24 +272,12 @@
         <div class="container">
             <div class="info-content">
                 <div class="section-header">
-                    <h2>Powered by Advanced AI</h2>
-                    <p>Our system uses state-of-the-art Convolutional Neural Networks ensuring high accuracy and
-                        reliability.</p>
+                    <h2>Powered by CNN Architectures</h2>
+                    <p>Leverages state-of-the-art Convolutional Neural Networks, including ResNet50 and EfficientNetB0,
+                        to ensure high accuracy and reliable disease detection.</p>
                 </div>
 
                 <div class="models-grid">
-                    <div class="model-card">
-                        <div class="model-icon">
-                            <i class="fa-solid fa-network-wired"></i>
-                        </div>
-                        <h3>EfficientNetB0</h3>
-                        <p>A highly optimized architecture providing outstanding accuracy with computational efficiency,
-                            perfect for real-time inference.</p>
-                        <ul class="model-features">
-                            <li><i class="fa-solid fa-check"></i> Fast processing</li>
-                            <li><i class="fa-solid fa-check"></i> High precision</li>
-                        </ul>
-                    </div>
                     <div class="model-card">
                         <div class="model-icon">
                             <i class="fa-solid fa-brain"></i>
@@ -289,6 +288,18 @@
                         <ul class="model-features">
                             <li><i class="fa-solid fa-check"></i> Deep architecture</li>
                             <li><i class="fa-solid fa-check"></i> Robust feature extraction</li>
+                        </ul>
+                    </div>
+                    <div class="model-card">
+                        <div class="model-icon">
+                            <i class="fa-solid fa-network-wired"></i>
+                        </div>
+                        <h3>EfficientNetB0</h3>
+                        <p>A highly optimized architecture providing outstanding accuracy with computational efficiency,
+                            perfect for real-time inference.</p>
+                        <ul class="model-features">
+                            <li><i class="fa-solid fa-check"></i> Fast processing</li>
+                            <li><i class="fa-solid fa-check"></i> High precision</li>
                         </ul>
                     </div>
                 </div>
@@ -302,10 +313,10 @@
             <div class="footer-content">
                 <div class="footer-brand">
                     <a href="#" class="logo footer-logo">
-                        <i class="fa-solid fa-leaf"></i> PlantCare AI
+                        <i class="fa-solid fa-leaf"></i> PDDS
                     </a>
-                    <p class="footer-desc">Empowering agriculture through artificial intelligence. Detect diseases early
-                        and save your crops.</p>
+                    <p class="footer-desc">Empowering agriculture through machine learning. Detect diseases early and
+                        save your crops.</p>
                     <div class="social-links">
                         <a href="#" class="social-icon"><i class="fa-brands fa-github"></i></a>
                         <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
@@ -323,20 +334,47 @@
                             <li><a href="#upload">Detect Disease</a></li>
                         </ul>
                     </div>
-                    <div class="link-group">
-                        <h4>Legal</h4>
-                        <ul>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms of Service</a></li>
-                        </ul>
-                    </div>
+                    <div class="link-group"></div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 PlantCare AI. All rights reserved. | Developed by Senior Frontend Dev</p>
+                <p>Developed by Ms.Yogita Vitthal Badgujar</p>
             </div>
         </div>
     </footer>
+
+    <!-- Abstract Modal -->
+    <div id="abstract-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Abstract</h2>
+                <button class="modal-close" id="close-modal-btn" aria-label="Close modal">
+                    <i class="fa-solid fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>India is an agrarian nation, with agriculture employing more than 70% of the population. Agriculture
+                    contributes to a percentage of our national revenue. Agriculturalists are losing money owing to
+                    numerous crop illnesses, and cultivators find it difficult to keep track of the crop on a regular
+                    basis when the cultivated area is large. As a result, plant disease identification is critical in
+                    the agricultural area. For the loss caused by agricultural diseases, which has a negative impact on
+                    crop quality and output, timely and precise disease identification is critical. At times, humans
+                    can’t detect the disease from an infected leaf with the naked eye. Disease detection is important
+                    because it may assist farmers in providing appropriate solutions to prevent this disease.</p>
+                <p>The deep-learning technique of leaf-based image classification using Convolutional Neural Networks
+                    (CNNs), which has shown impressive results, can make the work of recognizing and classifying all
+                    diseases trouble-less and more precise. By leveraging transfer learning with EfficientNetB0 and
+                    ResNet50, the system achieves superior accuracy compared to traditional machine learning methods.
+                    The PlantVillage dataset is used for training and evaluation. Traditional methods typically rely on
+                    visual inspection by a human expert, which is time-consuming, less frequent, and can be inaccurate
+                    due to the limitations of human perception and experience.</p>
+                <p>EfficientNetB0 is often more efficient and can perform better, especially on tasks with limited data,
+                    while ResNet50 may provide higher accuracy on some benchmarks and benefit from larger datasets. To
+                    achieve the best results by combining both models in a hybrid approach, such as using them as
+                    feature extractors for a final classifier like a Support Vector Machine (SVM).</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Custom JS -->
     <script src="js/script.js"></script>

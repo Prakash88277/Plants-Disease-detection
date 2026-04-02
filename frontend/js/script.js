@@ -299,4 +299,48 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // 7. Abstract Modal Toggle
+    const learnMoreBtn = document.getElementById('learn-more-btn');
+    const abstractModal = document.getElementById('abstract-modal');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+
+    if (learnMoreBtn && abstractModal && closeModalBtn) {
+        // Open Modal
+        learnMoreBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            abstractModal.classList.remove('hidden');
+            // Force reflow
+            void abstractModal.offsetWidth;
+            abstractModal.classList.add('show');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+
+        // Close Modal function
+        const closeModal = () => {
+            abstractModal.classList.remove('show');
+            setTimeout(() => {
+                abstractModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }, 300); // Wait for transition
+        };
+
+        // Close via button
+        closeModalBtn.addEventListener('click', closeModal);
+
+        // Close click outside
+        abstractModal.addEventListener('click', (e) => {
+            if (e.target === abstractModal) {
+                closeModal();
+            }
+        });
+
+        // Close via escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && abstractModal.classList.contains('show')) {
+                closeModal();
+            }
+        });
+    }
+
 });
+
