@@ -10,8 +10,6 @@ plant-leaf-diseases-classification-using-cnn.ipynb
 best_epoch_weights.h5
 
 # Models and Model Directories
-saved_models/
-backend/saved_models/
 
 # Dataset and Unimportant Folders
 dataset/
