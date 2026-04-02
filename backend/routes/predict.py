@@ -1,31 +1,21 @@
+import sys
+import os
+import io
 import time
 import hashlib
 import numpy as np
 import logging
+from PIL import Image
 from fastapi import APIRouter, UploadFile, File, HTTPException
 from fastapi.responses import JSONResponse
 
 from model.model_loader import model_loader
-from utils.preprocess import process_image
 from config.settings import CLASS_LABELS
+
+from utils.pipeline import predict as cascaded_predict
 
 router = APIRouter()
 logger = logging.getLogger(__name__)
-
-def parse_label(label: str):
-    normalized = label.replace("___", "_").replace("__", "_")
-    parts = normalized.split("_", 1)
-    
-    if len(parts) == 2:
-        plant_type = parts[0]
-        disease = parts[1].replace("_", " ")
-        if disease.lower() == "healthy":
-            disease = "Healthy"
-    else:
-        plant_type = label
-        disease = "Unknown"
-        
-    return plant_type, disease
 
 @router.post("/predict")
 async def predict(file: UploadFile = File(...)):
@@ -35,40 +25,47 @@ async def predict(file: UploadFile = File(...)):
     try:
         contents = await file.read()
         
-        # Diagnostic 1: Confirm backend receives new image
+        # Diagnostic: Confirm backend receives new image
         img_hash = hashlib.md5(contents).hexdigest()
         print(f"--- PREDICTION REQUEST START ---")
         print(f"Image hash: {img_hash}")
         
         start_time = time.time()
         
-        img_array = process_image(contents)
+        # Load the image into PIL
+        try:
+            image = Image.open(io.BytesIO(contents)).convert('RGB')
+        except Exception as preprocess_err:
+            raise HTTPException(status_code=422, detail=f"Image parsing failed: {str(preprocess_err)}")
+
+        # Fetch models synchronously (already loaded)
+        resnet_model = model_loader.get_resnet_model()
+        efficientnet_model = model_loader.get_efficientnet_model()
         
-        model = model_loader.get_model()
-        predictions = model.predict(img_array)
+        # Call the single-source cascaded inference pipeline
+        pred_result = cascaded_predict(
+            image_input=image,
+            resnet_model=resnet_model,
+            efficientnet_model=efficientnet_model,
+            class_names=CLASS_LABELS,
+            threshold=0.30
+        )
         
-        print(f"Raw Predictions: {predictions.tolist()}")
-        
-        predicted_class = np.argmax(predictions[0])
-        confidence = float(np.max(predictions[0]) * 100)
-        
-        print(f"Predicted Index: {predicted_class}")
-        print(f"Predicted Label: {CLASS_LABELS[predicted_class]}")
-        print(f"Confidence: {confidence}%")
-        print(f"--- PREDICTION REQUEST END ---")
-        
-        label = CLASS_LABELS[predicted_class]
-        plant, disease = parse_label(label)
-        
-        confidence_str = f"{confidence:.2f}%"
+        confidence_str = f"{pred_result['confidence'] * 100:.2f}%"
+        stage1_confidence_str = f"{pred_result.get('stage1_confidence', 0) * 100:.2f}%"
         prediction_time_ms = round((time.time() - start_time) * 1000, 2)
         
+        print(f"Plant: {pred_result['plant']} | Disease: {pred_result['disease']}")
+        print(f"Confidence: {confidence_str} | Stage 1 Conf: {stage1_confidence_str}")
+        print(f"--- PREDICTION REQUEST END ---")
+        
         result = {
-            "plant": plant,
-            "disease": disease,
+            "plant": pred_result["plant"],
+            "disease": pred_result["disease"],
             "confidence": confidence_str,
+            "stage1_confidence": stage1_confidence_str,
             "prediction_time_ms": prediction_time_ms,
-            "model_name": "Deep Learning CNN"
+            "model_name": "Cascaded ResNet50 + EfficientNetB0"
         }
         
         # Disable caching dynamically

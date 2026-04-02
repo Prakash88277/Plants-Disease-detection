@@ -3,11 +3,11 @@ from PIL import Image
 from io import BytesIO
 from fastapi import HTTPException
 
-def process_image(file_bytes: bytes) -> np.ndarray:
+def process_image(file_bytes: bytes, target_size: tuple = (256, 256)) -> np.ndarray:
     try:
         # Match EXACT training preprocessing
         img = Image.open(BytesIO(file_bytes)).convert("RGB")
-        img = img.resize((224, 224))
+        img = img.resize(target_size)
         img_array = np.array(img) / 255.0
         img_array = np.expand_dims(img_array, axis=0)
         

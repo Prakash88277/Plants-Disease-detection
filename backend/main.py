@@ -30,14 +30,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load model asynchronously (or concurrently on startup)
+# Load models synchronously on startup
 @app.on_event("startup")
-async def startup_event():
+def startup_event():
     logger.info("Starting up Plant Disease Detection API...")
     try:
-        model_loader.load_model()
+        model_loader.load_models()
     except Exception as e:
-        logger.error(f"Failed to initialize model on startup: {str(e)}")
+        logger.error(f"Failed to initialize models on startup: {str(e)}")
 
 # Add Routes
 app.include_router(predict_router, tags=["Prediction"])

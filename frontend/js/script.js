@@ -237,6 +237,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 6. Model Analysis Toggle
+    const analysisBtn = document.getElementById('analysis-btn');
+    const analysisPanel = document.getElementById('analysis-panel');
+
+    if (analysisBtn && analysisPanel) {
+        analysisBtn.addEventListener('click', () => {
+            if (analysisPanel.classList.contains('show')) {
+                // Hide panel
+                analysisPanel.classList.remove('show');
+                setTimeout(() => {
+                    analysisPanel.classList.add('hidden');
+                }, 400); // Wait for transition
+            } else {
+                // Show panel
+                analysisPanel.classList.remove('hidden');
+                // Force reflow to ensure transition runs
+                void analysisPanel.offsetWidth;
+                analysisPanel.classList.add('show');
+                // Scroll slightly
+                setTimeout(() => {
+                    analysisPanel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 100);
+            }
+        });
+    }
+
     // Helper to show red alert box in UI for errors
     function showError(message) {
         clearError(); // Remove existing if any

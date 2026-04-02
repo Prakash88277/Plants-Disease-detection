@@ -7,17 +7,24 @@ env/
 # Jupyter Notebooks and Checkpoints
 .ipynb_checkpoints/
 plant-leaf-diseases-classification-using-cnn.ipynb
+best_epoch_weights.h5
 
 # Models and Model Directories
-/saved_models/
+saved_models/
+backend/saved_models/
 
-# Dataset and Media
+# Dataset and Unimportant Folders
 dataset/
+dataset1/
+Addy/
+frontend/Images/
+Extra/
 
 # Python caching
 __pycache__/
 *.py[cod]
 *$py.class
+*.pyc
 
 # IDE and OS files
 .vscode/
