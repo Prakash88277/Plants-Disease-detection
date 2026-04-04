@@ -2,7 +2,7 @@
 
 A modern, highly accurate, and scalable Plant Disease Detection System powered by Convolutional Neural Networks (CNNs). This system utilizes a cascaded deep-learning approach to confidently classify plant species and diagnose diseases from leaf images, providing agriculturalists with a crucial tool to protect crops and ensure high output quality.
 
-## 🚀 Overview
+## # Overview
 
 Agriculturalists often lose crops to illnesses that are difficult to track or identify with the naked eye. This project provides a robust solution with a **Cascaded Inference Pipeline** using two highly optimized CNN architectures:
 1. **ResNet50:** Acts as the Stage 1 primary feature extractor to categorize the plant type.
@@ -12,7 +12,7 @@ This hybrid technique ensures superior accuracy compared to traditional machine 
 
 ---
 
-## ✨ Features
+## # Features
 
 - **Cascading Model Pipeline:** Dual-stage processing (ResNet50 → EfficientNetB0) maximizing output confidence.
 - **FastAPI Backend:** Ultra-fast, synchronous model loading with asynchronous endpoints.
@@ -23,7 +23,7 @@ This hybrid technique ensures superior accuracy compared to traditional machine 
 
 ---
 
-## 🛠️ Tech Stack
+## # Tech Stack
 
 - **Frontend:** Vanilla HTML5, CSS3, JavaScript
 - **Backend:** FastAPI, Uvicorn, Python
@@ -33,7 +33,7 @@ This hybrid technique ensures superior accuracy compared to traditional machine 
 
 ---
 
-## 📁 Project Structure
+## # Project Structure
 
 ```
 ├── Images/                 # Documentation and analysis visual graphs
@@ -54,7 +54,7 @@ This hybrid technique ensures superior accuracy compared to traditional machine 
 
 ---
 
-## ⚙️ How It Works
+## # How It Works
 
 1. **User Upload:** An image is submitted via the frontend UI.
 2. **Preprocessing:** The image is passed to memory, resized appropriately (`224x224`), and converted into model-ready arrays.
@@ -64,7 +64,7 @@ This hybrid technique ensures superior accuracy compared to traditional machine 
 
 ---
 
-## 📊 Dataset
+## # Dataset
 
 We utilized the incredible PlantVillage dataset repository for evaluation and training:  
 🔗 **[Plant Diseases Training Dataset (Kaggle)](https://www.kaggle.com/datasets/nirmalsankalana/plant-diseases-training-dataset)**
@@ -73,7 +73,7 @@ We utilized the incredible PlantVillage dataset repository for evaluation and tr
 
 ---
 
-## 💻 Installation & Setup
+## # Installation & Setup
 
 ### 1. Clone the Repository
 ```bash
@@ -116,7 +116,7 @@ python -m http.server 3000
 
 ---
 
-## 🔌 API Endpoint
+## # API Endpoint
 
 ### `POST /predict`
 Uploads a file to process through the pipeline.
@@ -136,7 +136,7 @@ Uploads a file to process through the pipeline.
 
 ---
 
-## 📈 Results
+## # Results
 
 Our implementation drastically transforms how farming models analyze data. By employing transfer learning with **EfficientNetB0**, the pipeline retains an exceptional learning curve minimizing val-loss even upon extremely limited samples. Concurrently, **ResNet50** utilizes its deeper benchmarking accuracy to isolate general anomalies initially.
 
