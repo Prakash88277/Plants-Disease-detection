@@ -67,7 +67,7 @@ This hybrid technique ensures superior accuracy compared to traditional machine 
 ## # Dataset
 
 We utilized the incredible PlantVillage dataset repository for evaluation and training:  
-🔗 **[Plant Diseases Training Dataset (Kaggle)](https://www.kaggle.com/datasets/nirmalsankalana/plant-diseases-training-dataset)**
+🔗 **[Plant Diseases Training Dataset (Kaggle)](https://www.kaggle.com/code/killa92/f1-96-plant-diseases-classification-pytorch/input)**
 
 *Usage:* Over several thousands of leaf images categorized logically. This dataset powers the `58` class vectors identified by our settings configurations.
 
@@ -77,7 +77,7 @@ We utilized the incredible PlantVillage dataset repository for evaluation and tr
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/Prakash88277/Plants-Disease-detection.git
+git clone https://github.com/Neuralyts/Plants-Disease-detection.git
 cd Plants-Disease-detection
 ```
 
