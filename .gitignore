@@ -1,28 +1,19 @@
 # Virtual environments
 .venv/
-venv/
 env/
 .env
-
-# Jupyter Notebooks and Checkpoints
-.ipynb_checkpoints/
-plant-leaf-diseases-classification-using-cnn.ipynb
-best_epoch_weights.h5
-
-# Models and Model Directories
 
 # Dataset and Unimportant Folders
 dataset/
 dataset1/
 Addy/
-frontend/Images/
 Extra/
+/saved_models/
 
 # Python caching
-__pycache__/
-*.py[cod]
-*$py.class
+**/__pycache__/
 *.pyc
+*.pyo
 
 # IDE and OS files
 .vscode/

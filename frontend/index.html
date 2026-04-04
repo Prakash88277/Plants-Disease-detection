@@ -191,9 +191,8 @@
                             </div>
                         </div>
                         <div class="result-actions">
-                            <!-- <a href="result.html" class="btn outline-btn">View Detailed Report</a> -->
-                            </button>
-                            <button id="analysis-btn" class="btn outline-btn" style="display: flex; gap: 0.5rem;">
+                            <button id="analysis-btn" class="btn outline-btn"
+                                style="display: flex; gap: 0.5rem; margin: 0 auto;">
                                 <i class="fa-solid fa-chart-line"></i> View Model Analysis
                             </button>
                         </div>
@@ -215,6 +214,14 @@
                             </div>
                             <p class="analysis-desc">Comparison between Stage-1 (ResNet50) and Stage-2 (EfficientNetB0)
                                 confidence scores.</p>
+                        </div>
+
+                        <div class="analysis-item">
+                            <h4 class="analysis-title">ResNet50 Training History</h4>
+                            <div class="analysis-img-wrapper">
+                                <img src="../Images/resnet_history.png" alt="ResNet50 History" loading="lazy">
+                            </div>
+                            <p class="analysis-desc">Training and validation accuracy/loss over epochs.</p>
                         </div>
 
                         <div class="analysis-item">
