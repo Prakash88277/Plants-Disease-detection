@@ -43,7 +43,9 @@
     <section id="home" class="hero">
         <div class="container hero-container">
             <div class="hero-content">
-                <h1>Plant Disease Detection<br>Using CNN</h1>
+                <h1>Plant Disease Detection Using CNNs :<br></h1>
+                <h2>Cascading ResNet50 and EfficientNetB0 Architectures</h2>
+                <!-- <h1>Plant Disease Detection<br>Using CNN</h1> -->
                 <p>Leverage a sequential cascade of ResNet50 and EfficientNetB0 to accurately identify plant diseases
                     from leaf images - ensuring precise detection and improved agricultural productivity.</p>
                 <div class="hero-buttons">
@@ -59,6 +61,37 @@
                         <div class="floating-icon icon-2"><i class="fa-solid fa-droplet"></i></div>
                         <div class="floating-icon icon-3"><i class="fa-solid fa-sun"></i></div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model Accuracy Section -->
+    <section id="model-accuracy" class="model-accuracy">
+        <div class="container">
+            <div class="section-header">
+                <h2>Model Accuracy Comparison</h2>
+                <p>Performance of Cascading Models</p>
+            </div>
+            <div class="accuracy-comparison-wrapper">
+                <div class="accuracy-card resnet-card">
+                    <h3>ResNet50</h3>
+                    <div class="accuracy-value">82%</div>
+                    <p>Initial plant classification model</p>
+                    <i class="fa-solid fa-leaf bg-icon"></i>
+                </div>
+                
+                <div class="arrow-indicator">
+                    <i class="fa-solid fa-arrow-right desktop-arrow"></i>
+                    <i class="fa-solid fa-arrow-down mobile-arrow"></i>
+                </div>
+
+                <div class="accuracy-card efficientnet-card highlight">
+                    <div class="improvement-badge">Improved Accuracy</div>
+                    <h3>EfficientNetB0</h3>
+                    <div class="accuracy-value">96%</div>
+                    <p>Refined disease detection model</p>
+                    <i class="fa-solid fa-brain bg-icon"></i>
                 </div>
             </div>
         </div>

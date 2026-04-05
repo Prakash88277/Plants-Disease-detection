@@ -374,6 +374,17 @@ ul {
 .hero-content h1 {
     font-size: clamp(1.8rem, 3.1vw, 3.5rem);
     line-height: 1.2;
+    margin-bottom: 0.5rem;
+    color: var(--dark-green);
+    background: linear-gradient(to right, var(--dark-green), #0a3d0f);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-content h2 {
+    font-size: clamp(1.8rem, 2.1vw, 3.5rem);
+    line-height: 1.2;
     margin-bottom: 1.5rem;
     color: var(--dark-green);
     background: linear-gradient(to right, var(--dark-green), #0a3d0f);
@@ -1515,4 +1526,135 @@ footer {
 
 .modal-body p {
     margin-bottom: 1rem;
+}
+
+/* --- Model Accuracy Comparison Section --- */
+.model-accuracy {
+    padding: 2rem 0 5rem;
+    background-color: var(--bg-light);
+}
+
+.accuracy-comparison-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.accuracy-card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 2.5rem;
+    flex: 1;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    border: 1px solid rgba(102, 187, 106, 0.2);
+}
+
+.accuracy-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+.accuracy-card.highlight {
+    border: 2px solid var(--primary);
+    box-shadow: 0 10px 25px rgba(46, 125, 50, 0.15);
+    background: linear-gradient(to bottom, #ffffff, #f9fff9);
+}
+
+.accuracy-card h3 {
+    font-size: 1.5rem;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.accuracy-value {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 1rem 0;
+    line-height: 1;
+}
+
+.accuracy-card.highlight .accuracy-value {
+    color: var(--dark-green);
+}
+
+.accuracy-card p {
+    color: var(--text-light);
+    font-size: 0.95rem;
+    margin-bottom: 0;
+}
+
+.accuracy-card .bg-icon {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    font-size: 8rem;
+    color: var(--bg-color);
+    opacity: 0.4;
+    z-index: 0;
+    transition: transform 0.5s ease;
+}
+
+.accuracy-card:hover .bg-icon {
+    transform: scale(1.1);
+}
+
+.accuracy-card h3, .accuracy-card .accuracy-value, .accuracy-card p, .improvement-badge {
+    position: relative;
+    z-index: 1;
+}
+
+.arrow-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: var(--primary);
+    opacity: 0.6;
+}
+
+.mobile-arrow {
+    display: none;
+}
+
+.improvement-badge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--primary);
+    color: white;
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border-radius: 0 0 10px 10px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* Responsiveness for accuracy cards */
+@media (max-width: 768px) {
+    .accuracy-comparison-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+    .accuracy-card {
+        width: 100%;
+        max-width: 400px;
+    }
+    .desktop-arrow {
+        display: none;
+    }
+    .mobile-arrow {
+        display: block;
+        margin: 10px 0;
+    }
 }
