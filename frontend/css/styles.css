@@ -1575,7 +1575,7 @@ footer {
 }
 
 .accuracy-value {
-    font-size: 3.5rem;
+    font-size: 3rem;
     font-weight: 700;
     color: var(--primary);
     margin: 1rem 0;
@@ -1607,7 +1607,10 @@ footer {
     transform: scale(1.1);
 }
 
-.accuracy-card h3, .accuracy-card .accuracy-value, .accuracy-card p, .improvement-badge {
+.accuracy-card h3,
+.accuracy-card .accuracy-value,
+.accuracy-card p,
+.improvement-badge {
     position: relative;
     z-index: 1;
 }
@@ -1646,13 +1649,16 @@ footer {
         flex-direction: column;
         align-items: center;
     }
+
     .accuracy-card {
         width: 100%;
         max-width: 400px;
     }
+
     .desktop-arrow {
         display: none;
     }
+
     .mobile-arrow {
         display: block;
         margin: 10px 0;
