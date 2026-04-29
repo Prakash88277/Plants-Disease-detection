@@ -1079,6 +1079,14 @@ footer {
     transform: translateY(-3px);
 }
 
+.social-icon img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    transition: var(--transition);
+}
+
 .footer-links {
     display: flex;
     flex-direction: column;
